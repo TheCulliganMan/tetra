@@ -9,6 +9,8 @@ script:
   - tox
   - fossa init
   - fossa analyze
+after_success:
+  - fossa test
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
