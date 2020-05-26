@@ -8,7 +8,7 @@ before_script:
 script:
   - tox
   - fossa init
-  - fossa analyze
+  - FOSSA_API_KEY=${FOSSA_API_KEY} fossa analyze
 after_success:
   - fossa test
 deploy:
