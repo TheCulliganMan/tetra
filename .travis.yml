@@ -3,7 +3,12 @@ python:
   - 3.8
   - 3.7
 install: pip install -U tox-travis
-script: tox
+before_script:
+  - "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash"
+script:
+  - tox
+  - fossa init
+  - fossa analyze
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
